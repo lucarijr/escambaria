@@ -1,0 +1,11 @@
+CREATE DATABASE escambaria;
+USE escambaria;
+
+CREATE TABLE item
+(
+id int primary key not null auto_increment,
+description varchar(255),
+phone varchar(255),
+url varchar(255),
+url_type varchar(255)
+); 
