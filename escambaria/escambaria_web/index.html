@@ -14,67 +14,32 @@
 	<script src="js/jquery-ui.1.11.4.js"></script>
 	<script type="text/javascript">
 		
-		var escambosCont = 3;
-		var userName = "Eduardo do Chavante";
-		var url = "img/carpinteiro.jpg";
-		var description = "Este kit de chaves é especial, desenvolvido pelo meu avô em 1991. <br>Fora isto, ele possui também chaves especiais.";
-		var email = "edudochavante@gmail.com";
-		var telefone = "(51) 3737-5962";
+ 	$(document).ready(function () {
+		 	 $.ajax({
+		        type : 'GET',
+		        dataType : 'json',
+		        url: 'json_sample.json',
+		        async: false,
+		        success : function(data) {
+		            var json_parent = data.items;
 
-
-		 $(document).ready(function () {
-		 	$( ".username" ).text(userName);
-
-		 	for(var i = 0 ; i < escambosCont; i++) {
-		 		$('.container_itens').append($('<div class="col-md-4 service_item_thumb"><img src="'+url+'" class="img-responsive service_thumbnail"> </img><p class="item_descricao"> '+description+' </p><p> '+email+' - '+telefone+' </p> </div>'));
-		 	}
-
-
-			$.ajax({
-			  url: 'json_sample.json',
-			   dataType : "json",
-			  //type: 'GET',
-			  //data: 'twitterUsername=jquery4u',
-			  success: function(result) {
-			  	alert(result);
-			  },
-			  error: function(xhr, status, error) {
-				var err = eval("(" + xhr.responseText + ")");
-				alert(err.Message);
-			  }
-			});
-
-
-
-		 	$.ajax({
-		 		//type: "GET",
-		        url : "json_sample.php",
-		        dataType : "json",
-		        success : function(json_result){
-		        	alert(json_result);
-		        	/*alert(json_result.item1);
-		        	var json = $.parseJSON(json_result);
-		        	alert(json_result.item1);
-
-		        	$.each(json_result, function(i, field){
-		        		alert(field.name)
-			            $("body").append(field.name + " adsasd");
+		            $.each(json_parent, function(index, item) {
+			            if(item.type == "image") {
+			            	$('.container_itens').append($('<div class="col-md-4 service_item_thumb"><img src="'+item.url+'" class="img-responsive service_thumbnail"> </img><p class="item_descricao"> '+item.desc+' </p><p> '+item.name+' </p> </div>'));
+			            }
+			            else if(item.type == "video"){
+			            	$('.container_itens').append($('<div class="col-md-4 service_item_thumb"><iframe class="img-responsive service_thumbnail" src="'+item.url+'"></iframe><p class="item_descricao"> '+item.desc+' </p><p> '+item.name+' </p> </div>'));
+			            }
 			        });
-*/
-		        },
-			  error: function(e) {
-				alert("error");
-				alert(e);
-			  }
+		        
+		        } 
 		    });
-		});
+	});
 
 	</script>
 
   </head>
   <body>
-
-	
 
     <div class="container">
 
@@ -82,46 +47,9 @@
 		<h2 class="username"> Eduardo do Xavante </h2>
 		<h4> Escambos </h4>
 
-
-		<div class="row service_item container_itens">
-		  <div class="col-md-4 service_item_thumb"> 
-		  	<img src="img/carpinteiro.jpg" class="img-responsive service_thumbnail"> </img>
-		  	<p class="item_descricao"> Este kit de chaves é especial, desenvolvido pelo meu avô em 1991. <br>
-		  		Fora isto, ele possui também chaves especiais.
-		  	</p>
-		  	<p> edudochavante@gmail.com - (51) 3737-5962 </p>
-		  </div>
-		 
-		 <div class="col-md-4 service_item_thumb"> 
-		  	<iframe class="img-responsive service_thumbnail" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1"></iframe>
-		  	<p class="item_descricao"> Este kit de chaves é especial, desenvolvido pelo meu avô em 1991. <br>
-		  		Fora isto, ele possui também chaves especiais.
-		  	</p>
-		  	<p> edudochavante@gmail.com - (51) 3737-5962 </p>
-		  </div>
-
-		  <div class="col-md-4 service_item_thumb"> 
-		  	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Google_Glass_photo.JPG/800px-Google_Glass_photo.JPG" class="img-responsive service_thumbnail"> </img>
-		  	<p class="item_descricao"> Este kit de chaves é especial, desenvolvido pelo meu avô em 1991. <br>
-		  		Fora isto, ele possui também chaves especiais.
-		  	</p>
-		  	<p> edudochavante@gmail.com - (51) 3737-5962 </p>
-		  </div>
-
-		   <div class="col-md-4 service_item_thumb"> 
-		  	<img src="img/carpinteiro.jpg" class="img-responsive service_thumbnail"> </img>
-		  	<p class="item_descricao"> Este kit de chaves é especial, desenvolvido pelo meu avô em 1991. <br>
-		  		Fora isto, ele possui também chaves especiais.
-		  	</p>
-		  	<p> edudochavante@gmail.com - (51) 3737-5962 </p>
-		  </div>
-
-		<div style="clear:both;"> </div>
+		<div class="row service_item container_itens"> </div>
 
     </div>
 
-    
-
-    
   </body>
 </html>
