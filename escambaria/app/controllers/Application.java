@@ -16,17 +16,19 @@ import br.com.escambaria.model.Item;
 
 public class Application extends Controller {
 
-	public static Result index() {
-		return ok(index.render("Your new application is ready."));
-	}
+//	public static Result index() {
+//		return ok(index.render());
+//	}
 
-	public static Result getItems(String tag, String name) {
+	public static Result getItems() {
+		
+		System.out.println("chamou...");
 		
 		List<Item> items = new ArrayList<Item>();
-		items.add(new Item(1, "desc", "image", "url"));
-		items.add(new Item(1, "desc", "image", "url"));
-		items.add(new Item(1, "desc", "image", "url"));
-		items.add(new Item(1, "desc", "image", "url"));
+		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
+		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
+		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
+		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
 		
 		Map<String, List<Item>> itemMap = new HashMap<String, List<Item>>();
 		itemMap.put("items", items);

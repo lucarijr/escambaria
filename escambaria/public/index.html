@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Escambaria </title>
+
+	<link href="/assets/libraries/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="/assets/stylesheets/style.css" rel="stylesheet">
+	<script src="/assets/javascripts/jquery-2.1.4.min.js"></script>
+	<script src="/assets/libraries/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		
+ 	$(document).ready(function () {
+		 	 $.ajax({
+		        type : 'GET',
+		        dataType : 'json',
+		        url: '/items',
+		        async: true,
+		        success : function(data) {
+		        	alert("teste");
+		            var json_parent = data.items;
+
+		            $.each(json_parent, function(index, item) {
+			            if(item.type == "image") {
+			            	$('.container_itens').append($('<div class="col-md-4 service_item_thumb"><img src="'+item.url+'" class="img-responsive service_thumbnail"> </img><p class="item_descricao"> '+item.desc+' </p><p> '+item.name+' </p> </div>'));
+			            }
+			            else if(item.type == "video"){
+			            	$('.container_itens').append($('<div class="col-md-4 service_item_thumb"><iframe class="img-responsive service_thumbnail" src="'+item.url+'"></iframe><p class="item_descricao"> '+item.desc+' </p><p> '+item.name+' </p> </div>'));
+			            }
+			        });
+		        
+		        },
+		        error : function(e) {
+		        	console.log(e);
+		        	alert("error");
+		        }
+		    });
+	});
+
+	</script>
+
+  </head>
+  <body>
+
+    <div class="container">
+
+		<br>
+		<h2 class="username"> Eduardo do Xavante </h2>
+		<h4> Escambos </h4>
+
+		<div class="row service_item container_itens"> </div>
+
+    </div>
+
+  </body>
+</html>

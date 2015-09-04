@@ -3,18 +3,21 @@ package br.com.escambaria.model;
 public class Item {
 
 	private int id;
+	private String name;
 	private String desc;
 	private String type;
 	private String url;
 	
-	public Item(String desc, String type, String url) {
+	public Item(String name, String desc, String type, String url) {
+		this.name = name;
 		this.desc = desc;
 		this.type = type;
 		this.url = url;
 	}
 	
-	public Item(int id, String desc, String type, String url) {
+	public Item(int id, String name, String desc, String type, String url) {
 		this.id = id;
+		this.name = name;
 		this.desc = desc;
 		this.type = type;
 		this.url = url;
@@ -43,6 +46,14 @@ public class Item {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
