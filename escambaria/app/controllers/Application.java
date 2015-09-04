@@ -25,15 +25,22 @@ public class Application extends Controller {
 		System.out.println("chamou...");
 		
 		List<Item> items = new ArrayList<Item>();
-		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
-		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
-		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
-		items.add(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url"));
+		items.add(new Item(1, "Guilherme", "desc", "video", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1"));
+		items.add(new Item(1, "Guilherme", "desc", "video", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1"));
+		items.add(new Item(1, "Guilherme", "desc", "video", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1"));
+		items.add(new Item(1, "Guilherme", "desc", "video", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1"));
 		
 		Map<String, List<Item>> itemMap = new HashMap<String, List<Item>>();
 		itemMap.put("items", items);
 		
-	    return ok(Json.toJson(itemMap));
+	    return ok(Json.toJson(itemMap)).as("application/json");
+	}
+	
+	public static Result getItem() {
+//	    return ok(Json.toJson(new Item(1, "Guilherme", "desc", "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1", "url")));
+		
+		ObjectNode result = Json.newObject();
+		return ok(result);
 	}
 
 }

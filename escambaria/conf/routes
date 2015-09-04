@@ -6,6 +6,9 @@
 GET     /                          controllers.Assets.at(path="/public", file="/index.html")
 
 # List Items
+GET     /item                      controllers.Application.getItem()
+
+# List Items
 GET     /items                      controllers.Application.getItems()
 
 # Map static resources from the /public folder to the /assets URL path
