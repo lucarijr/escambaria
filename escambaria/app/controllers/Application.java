@@ -20,10 +20,18 @@ public class Application extends Controller {
 		return ok(index.render("Your new application is ready."));
 	}
 
-	public static Result getItems() {
-		ObjectNode result = Json.newObject();
-		result.get("{\"items\": [{\"id\":1, \"desc\": \"teste\", \"type\": \"image\", \"url\": \"url\"}] }");
-	    return ok(result);
+	public static Result getItems(String tag, String name) {
+		
+		List<Item> items = new ArrayList<Item>();
+		items.add(new Item(1, "desc", "image", "url"));
+		items.add(new Item(1, "desc", "image", "url"));
+		items.add(new Item(1, "desc", "image", "url"));
+		items.add(new Item(1, "desc", "image", "url"));
+		
+		Map<String, List<Item>> itemMap = new HashMap<String, List<Item>>();
+		itemMap.put("items", items);
+		
+	    return ok(Json.toJson(itemMap));
 	}
 
 }
